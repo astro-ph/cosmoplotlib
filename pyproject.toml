@@ -1,7 +1,10 @@
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
 [project]
 name = "cosmoplotlib"
-version = "0.1.0"
-description = "Handy python plotting library for cosmologists"
+description = "Useful Python plotting library for cosmology"
 authors = [
     {name = "Nicolas Tessore", email = "n.tessore@ucl.ac.uk"},
     {name = "Guadalupe Canas-Herrera", email = "guadalupe.canasherrera@esa.int"},
@@ -16,12 +19,18 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+requires-python = ">=3.7"
+dynamic = ["version"]
+dependencies = [
+    "numpy",
+    "matplotlib",
+]
 
 [project.urls]
 Repository = "https://github.com/astro-ph/cosmoplotlib"
 
-[build-system]
-requires = ["setuptools", "wheel"]
-build-backend = "setuptools.build_meta"
+[tool.hatch.version]
+source = "vcs"
 
-
+[tool.hatch.build.hooks.vcs]
+version-file = "cosmoplotlib/_version.py"
